@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="7PM — 낭만을 잃지 않는 만남 큐레이팅 서비스">
+  <meta property="og:title" content="7PM">
+  <meta property="og:description" content="Stop scrolling. Your destiny is waiting outside the algorithm.">
+  <title>7PM — 낭만을 잃지 않는 만남</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;1,200;1,300;1,400&family=Noto+Sans+KR:wght@100;200;300&family=Gowun+Batang&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green:  #0F4B00;
+      --pink:   #E04D54;
+      --ivory:  #E8DBD0;
+      --ivory2: #F0EAE2;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--green);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 200;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ────────────────────────────
+       HERO
+    ──────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 130px;
+      position: relative;
+    }
+
+    /* faint decorative ring */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: min(560px, 90vw);
+      height: min(560px, 90vw);
+      border-radius: 50%;
+      border: 1px solid rgba(15,75,0,0.07);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -55%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      font-size: 10px;
+      font-weight: 100;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 32px;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(110px, 22vw, 210px);
+      font-weight: 200;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      animation: fadeUp 1.2s ease 0.5s both;
+      margin-bottom: 44px;
+    }
+
+    .hero-rule {
+      width: 1px;
+      height: 52px;
+      background: var(--green);
+      opacity: 0.22;
+      margin: 0 auto 36px;
+      animation: fadeIn 1s ease 1s both;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 4vw, 32px);
+      font-weight: 300;
+      font-style: italic;
+      animation: fadeUp 1s ease 1.2s both;
+      margin-bottom: 14px;
+    }
+
+    .hero-sub {
+      font-size: clamp(11px, 2vw, 13px);
+      font-weight: 100;
+      letter-spacing: 0.14em;
+      opacity: 0.55;
+      animation: fadeIn 1s ease 1.5s both;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 44px; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      animation: fadeIn 1s ease 2.2s both;
+    }
+
+    .scroll-indicator span {
+      font-size: 9px;
+      font-weight: 100;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.38;
+    }
+
+    .scroll-bar {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, var(--green), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+
+    /* ────────────────────────────
+       ABOUT
+    ──────────────────────────── */
+    .about {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: clamp(80px, 12vw, 160px) 48px;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 9px;
+      font-weight: 100;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 56px;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .about-headline {
+      font-family: 'Gowun Batang', serif;
+      font-size: clamp(27px, 5vw, 46px);
+      line-height: 1.65;
+      margin-bottom: 48px;
+    }
+
+    .about-headline em {
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05em;
+      color: var(--pink);
+    }
+
+    .about-body {
+      font-size: clamp(14px, 2.2vw, 16px);
+      font-weight: 200;
+      line-height: 2.3;
+      opacity: 0.72;
+    }
+
+    /* ────────────────────────────
+       DARK SECTION
+    ──────────────────────────── */
+    .dark {
+      background: var(--green);
+      padding: clamp(100px, 14vw, 180px) 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dark-watermark {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48vw;
+      font-weight: 200;
+      color: rgba(255,255,255,0.025);
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .dark-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    .dark-eyebrow {
+      font-size: 9px;
+      font-weight: 100;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--pink);
+      opacity: 0.85;
+      margin-bottom: 52px;
+    }
+
+    .dark-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 5.5vw, 44px);
+      font-weight: 200;
+      font-style: italic;
+      color: var(--ivory);
+      line-height: 1.75;
+      margin-bottom: 52px;
+    }
+
+    .dark-quote .accent { color: var(--pink); font-style: normal; }
+
+    .dark-desc {
+      font-size: clamp(13px, 2vw, 15px);
+      font-weight: 100;
+      color: var(--ivory);
+      opacity: 0.55;
+      line-height: 2.4;
+      letter-spacing: 0.03em;
+    }
+
+    /* ────────────────────────────
+       CONNECT
+    ──────────────────────────── */
+    .connect {
+      padding: clamp(80px, 12vw, 160px) 48px;
+      text-align: center;
+    }
+
+    .connect-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 6.5vw, 60px);
+      font-weight: 200;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+
+    .connect-desc {
+      font-size: clamp(12px, 2vw, 14px);
+      font-weight: 100;
+      letter-spacing: 0.1em;
+      opacity: 0.52;
+      margin-bottom: 72px;
+    }
+
+    .qr-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .qr-card {
+      width: 240px;
+      background: var(--ivory2);
+      border: 1px solid rgba(15,75,0,0.09);
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.45s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .qr-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 72px rgba(15,75,0,0.13);
+    }
+
+    .qr-platform {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+    }
+
+    .qr-box {
+      width: 152px;
+      height: 152px;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid rgba(15,75,0,0.07);
+    }
+
+    .qr-box img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .qr-action {
+      font-size: 12px;
+      font-weight: 100;
+      letter-spacing: 0.06em;
+      opacity: 0.52;
+    }
+
+    .qr-btn {
+      font-size: 10px;
+      font-weight: 200;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--pink);
+      border-bottom: 1px solid var(--pink);
+      padding-bottom: 3px;
+    }
+
+    /* ────────────────────────────
+       FOOTER
+    ──────────────────────────── */
+    footer {
+      padding: 56px 40px;
+      border-top: 1px solid rgba(15,75,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 200;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      font-weight: 100;
+      letter-spacing: 0.12em;
+      opacity: 0.35;
+    }
+
+    /* ────────────────────────────
+       KEYFRAMES
+    ──────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0; }
+      40%, 60% { opacity: 0.45; }
+    }
+
+    /* ────────────────────────────
+       REVEAL ON SCROLL
+    ──────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.9s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .reveal.in { opacity: 1; transform: none; }
+
+    .reveal[data-d="1"] { transition-delay: 0.10s; }
+    .reveal[data-d="2"] { transition-delay: 0.20s; }
+    .reveal[data-d="3"] { transition-delay: 0.30s; }
+
+    /* ────────────────────────────
+       RESPONSIVE
+    ──────────────────────────── */
+    @media (max-width: 640px) {
+      .about, .connect { padding-left: 24px; padding-right: 24px; }
+      .dark { padding-left: 24px; padding-right: 24px; }
+      .qr-card { width: 100%; max-width: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <p class="hero-label">만남 큐레이팅 서비스</p>
+  <h1 class="hero-title">7PM</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-tagline">Stop scrolling.</p>
+  <p class="hero-sub">Your destiny is waiting outside the algorithm.</p>
+  <div class="scroll-indicator">
+    <span>scroll</span>
+    <div class="scroll-bar"></div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about">
+  <div class="section-tag reveal">About 7PM</div>
+  <h2 class="about-headline reveal" data-d="1">
+    서로가 마음에 든다면,<br>
+    <em>우선 만나보세요.</em>
+  </h2>
+  <p class="about-body reveal" data-d="2">
+    의미없는 고민과 망설임으로 인연을 놓치지 마세요.<br>
+    7PM은 낭만을 잃지 않는 만남 큐레이팅 서비스입니다.
+  </p>
+</section>
+
+<!-- ── DARK ── -->
+<section class="dark">
+  <div class="dark-watermark" aria-hidden="true">7</div>
+  <div class="dark-inner">
+    <p class="dark-eyebrow reveal">Our Promise</p>
+    <blockquote class="dark-quote reveal" data-d="1">
+      "알고리즘 밖에서<br>
+      <span class="accent">당신의 인연</span>이<br>
+      기다리고 있어요."
+    </blockquote>
+    <p class="dark-desc reveal" data-d="2">
+      끝없는 스크롤 속에서 지쳐버린 설렘을,<br>
+      7PM이 다시 찾아드릴게요.<br>
+      진짜 만남은 화면 너머에 있습니다.
+    </p>
+  </div>
+</section>
+
+<!-- ── CONNECT ── -->
+<section class="connect">
+  <h2 class="connect-title reveal">지금 함께해요</h2>
+  <p class="connect-desc reveal" data-d="1">QR을 스캔하거나 탭해서 바로 참여해보세요</p>
+
+  <div class="qr-wrap">
+    <a class="qr-card reveal" data-d="2"
+       href="http://pf.kakao.com/_xoGfqX"
+       target="_blank" rel="noopener noreferrer">
+      <span class="qr-platform">KakaoTalk</span>
+      <div class="qr-box">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=0F4B00&bgcolor=FFFFFF&data=http://pf.kakao.com/_xoGfqX"
+          alt="카카오톡 채널 QR코드"
+          loading="lazy"
+        >
+      </div>
+      <span class="qr-action">참여 신청하기</span>
+      <span class="qr-btn">신청하기 →</span>
+    </a>
+
+    <a class="qr-card reveal" data-d="3"
+       href="https://www.instagram.com/7pm_kr/"
+       target="_blank" rel="noopener noreferrer">
+      <span class="qr-platform">Instagram</span>
+      <div class="qr-box">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=0F4B00&bgcolor=FFFFFF&data=https://www.instagram.com/7pm_kr/"
+          alt="인스타그램 QR코드"
+          loading="lazy"
+        >
+      </div>
+      <span class="qr-action">@7pm_kr 팔로우하기</span>
+      <span class="qr-btn">팔로우 →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">7PM</div>
+  <p class="footer-text">낭만을 잃지 않는 만남 큐레이팅 서비스</p>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }),
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
