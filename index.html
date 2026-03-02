@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="4PM — 낭만을 잃지 않는 만남 큐레이팅 서비스">
   <meta property="og:title" content="4PM">
-  <meta property="og:description" content="Stop scrolling. Your destiny is waiting outside the algorithm.">
+  <meta property="og:description" content="캠퍼스 안에서, 우연을 설계합니다.">
   <title>4PM — 낭만을 잃지 않는 만남</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,7 @@
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    h1, h2, h3, h4, h5, h6 { font-weight: inherit; }
 
     :root {
       --green:  #0F4B00;
@@ -34,7 +35,7 @@
     }
 
     /* ────────────────────────────
-       HERO
+       PAGE 1 · HERO
     ──────────────────────────── */
     .hero {
       min-height: 100svh;
@@ -47,7 +48,6 @@
       position: relative;
     }
 
-    /* faint decorative ring */
     .hero::after {
       content: '';
       position: absolute;
@@ -95,15 +95,24 @@
       font-weight: 300;
       font-style: italic;
       animation: fadeUp 1s ease 1.2s both;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .hero-sub {
       font-size: clamp(11px, 2vw, 13px);
       font-weight: 100;
       letter-spacing: 0.14em;
-      opacity: 0.55;
+      opacity: 0.52;
       animation: fadeIn 1s ease 1.5s both;
+      margin-bottom: 32px;
+    }
+
+    .hero-campus {
+      font-family: 'Gowun Batang', serif;
+      font-size: clamp(16px, 2.8vw, 22px);
+      font-weight: 400;
+      animation: fadeUp 1s ease 1.8s both;
+      opacity: 0.78;
     }
 
     .scroll-indicator {
@@ -114,7 +123,7 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      animation: fadeIn 1s ease 2.2s both;
+      animation: fadeIn 1s ease 2.4s both;
     }
 
     .scroll-indicator span {
@@ -133,7 +142,7 @@
     }
 
     /* ────────────────────────────
-       ABOUT
+       PAGE 2 · ABOUT
     ──────────────────────────── */
     .about {
       max-width: 820px;
@@ -162,37 +171,35 @@
 
     .about-headline {
       font-family: 'Gowun Batang', serif;
-      font-size: clamp(27px, 5vw, 46px);
+      font-size: clamp(24px, 4.5vw, 40px);
+      font-weight: 400;
       line-height: 1.65;
-      margin-bottom: 48px;
-    }
-
-    .about-headline em {
-      font-style: italic;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05em;
-      color: var(--pink);
+      margin-bottom: 52px;
     }
 
     .about-body {
-      font-size: clamp(14px, 2.2vw, 16px);
+      font-size: clamp(15px, 2.5vw, 18px);
       font-weight: 200;
-      line-height: 2.3;
+      line-height: 2.6;
       opacity: 0.72;
     }
 
+    .about-body .place {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.02em;
+    }
+
     /* ────────────────────────────
-       DARK SECTION
+       PAGE 3 · OUR SYSTEM
     ──────────────────────────── */
-    .dark {
+    .system {
       background: var(--green);
       padding: clamp(100px, 14vw, 180px) 48px;
-      text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    .dark-watermark {
+    .system-watermark {
       position: absolute;
       inset: 0;
       display: flex;
@@ -207,46 +214,86 @@
       line-height: 1;
     }
 
-    .dark-inner {
+    .system-inner {
+      max-width: 720px;
+      margin: 0 auto;
       position: relative;
       z-index: 1;
-      max-width: 660px;
-      margin: 0 auto;
     }
 
-    .dark-eyebrow {
+    .system-eyebrow {
       font-size: 9px;
       font-weight: 100;
-      letter-spacing: 0.5em;
+      letter-spacing: 0.55em;
       text-transform: uppercase;
       color: var(--pink);
       opacity: 0.85;
-      margin-bottom: 52px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .dark-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(26px, 5.5vw, 44px);
-      font-weight: 200;
-      font-style: italic;
+    .system-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .system-headline {
+      font-family: 'Gowun Batang', serif;
+      font-size: clamp(22px, 4vw, 36px);
+      font-weight: 400;
       color: var(--ivory);
-      line-height: 1.75;
-      margin-bottom: 52px;
+      line-height: 1.55;
+      margin-bottom: 64px;
     }
 
-    .dark-quote .accent { color: var(--pink); font-style: normal; }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 44px;
+    }
 
-    .dark-desc {
-      font-size: clamp(13px, 2vw, 15px);
+    .step {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .step-label {
+      font-size: 9px;
+      font-weight: 100;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--pink);
+      padding-top: 5px;
+      opacity: 0.9;
+    }
+
+    .step-text {
+      font-size: clamp(14px, 2.2vw, 16px);
       font-weight: 100;
       color: var(--ivory);
-      opacity: 0.55;
-      line-height: 2.4;
-      letter-spacing: 0.03em;
+      line-height: 2;
+      opacity: 0.78;
+    }
+
+    .system-closing {
+      margin-top: 64px;
+      padding-top: 52px;
+      border-top: 1px solid rgba(232,219,208,0.12);
+      font-family: 'Gowun Batang', serif;
+      font-size: clamp(20px, 3.5vw, 30px);
+      font-weight: 400;
+      color: var(--ivory);
+      line-height: 1.7;
     }
 
     /* ────────────────────────────
-       CONNECT
+       PAGE 4 · CONNECT
     ──────────────────────────── */
     .connect {
       padding: clamp(80px, 12vw, 160px) 48px;
@@ -254,18 +301,19 @@
     }
 
     .connect-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(34px, 6.5vw, 60px);
-      font-weight: 200;
-      font-style: italic;
+      font-family: 'Gowun Batang', serif;
+      font-size: clamp(24px, 4.5vw, 40px);
+      font-weight: 400;
+      line-height: 1.7;
       margin-bottom: 18px;
     }
 
-    .connect-desc {
-      font-size: clamp(12px, 2vw, 14px);
-      font-weight: 100;
-      letter-spacing: 0.1em;
-      opacity: 0.52;
+    .connect-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(16px, 3vw, 24px);
+      font-weight: 300;
+      font-style: italic;
+      opacity: 0.6;
       margin-bottom: 72px;
     }
 
@@ -335,6 +383,75 @@
     }
 
     /* ────────────────────────────
+       PAGE 5 · WHAT'S NEXT
+    ──────────────────────────── */
+    .manifesto {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: clamp(100px, 14vw, 180px) 48px;
+    }
+
+    .manifesto-eyebrow {
+      font-size: 9px;
+      font-weight: 100;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 52px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .manifesto-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .manifesto-lead {
+      font-family: 'Gowun Batang', serif;
+      font-size: clamp(22px, 4vw, 36px);
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 52px;
+    }
+
+    .manifesto-eng {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 3.5vw, 28px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 2;
+      opacity: 0.68;
+      margin-bottom: 20px;
+    }
+
+    .manifesto-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--pink);
+      opacity: 0.4;
+      margin: 48px 0;
+    }
+
+    .manifesto-body {
+      font-size: clamp(15px, 2.5vw, 18px);
+      font-weight: 200;
+      line-height: 2.5;
+      opacity: 0.72;
+      margin-bottom: 44px;
+    }
+
+    .manifesto-closing {
+      font-family: 'Gowun Batang', serif;
+      font-size: clamp(17px, 3vw, 24px);
+      font-weight: 400;
+      line-height: 1.9;
+    }
+
+    /* ────────────────────────────
        FOOTER
     ──────────────────────────── */
     footer {
@@ -393,67 +510,79 @@
     .reveal[data-d="1"] { transition-delay: 0.10s; }
     .reveal[data-d="2"] { transition-delay: 0.20s; }
     .reveal[data-d="3"] { transition-delay: 0.30s; }
+    .reveal[data-d="4"] { transition-delay: 0.40s; }
 
     /* ────────────────────────────
        RESPONSIVE
     ──────────────────────────── */
     @media (max-width: 640px) {
-      .about, .connect { padding-left: 24px; padding-right: 24px; }
-      .dark { padding-left: 24px; padding-right: 24px; }
+      .about, .connect, .manifesto { padding-left: 24px; padding-right: 24px; }
+      .system { padding-left: 24px; padding-right: 24px; }
       .qr-card { width: 100%; max-width: 300px; }
+      .step { grid-template-columns: 40px 1fr; gap: 16px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── HERO ── -->
+<!-- ── PAGE 1 · HERO ── -->
 <section class="hero">
   <p class="hero-label">만남 큐레이팅 서비스</p>
   <h1 class="hero-title">4PM</h1>
   <div class="hero-rule"></div>
   <p class="hero-tagline">Stop scrolling.</p>
   <p class="hero-sub">Your destiny is waiting outside the algorithm.</p>
+  <p class="hero-campus">캠퍼스 안에서, 우연을 설계합니다.</p>
   <div class="scroll-indicator">
     <span>scroll</span>
     <div class="scroll-bar"></div>
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ── PAGE 2 · ABOUT ── -->
 <section class="about">
   <div class="section-tag reveal">About 4PM</div>
   <h2 class="about-headline reveal" data-d="1">
-    서로가 마음에 든다면,<br>
-    <em>우선 만나보세요.</em>
+    4PM은 낭만을 잃지 않는<br>만남 큐레이팅 서비스입니다.
   </h2>
   <p class="about-body reveal" data-d="2">
-    의미없는 고민과 망설임으로 인연을 놓치지 마세요.<br>
-    4PM은 낭만을 잃지 않는 만남 큐레이팅 서비스입니다.
+    <span class="place">강의실 복도에서,</span><br>
+    <span class="place">도서관 앞 벤치에서,</span><br>
+    우연히 마주칠 법한 인연을<br>
+    자연스럽게 연결해 드려요.
   </p>
 </section>
 
-<!-- ── DARK ── -->
-<section class="dark">
-  <div class="dark-watermark" aria-hidden="true">4</div>
-  <div class="dark-inner">
-    <p class="dark-eyebrow reveal">Our Promise</p>
-    <blockquote class="dark-quote reveal" data-d="1">
-      "알고리즘 밖에서<br>
-      <span class="accent">당신의 인연</span>이<br>
-      기다리고 있어요."
-    </blockquote>
-    <p class="dark-desc reveal" data-d="2">
-      끝없는 스크롤 속에서 지쳐버린 설렘을,<br>
-      4PM이 다시 찾아드릴게요.<br>
-      진짜 만남은 화면 너머에 있습니다.
-    </p>
+<!-- ── PAGE 3 · OUR SYSTEM ── -->
+<section class="system">
+  <div class="system-watermark" aria-hidden="true">4</div>
+  <div class="system-inner">
+    <p class="system-eyebrow reveal">Our System</p>
+    <h2 class="system-headline reveal" data-d="1">검증된 대학생만 연결합니다.</h2>
+    <div class="steps">
+      <div class="step reveal" data-d="2">
+        <span class="step-label">You</span>
+        <p class="step-text">매주 가능한 날짜만 선택하세요.</p>
+      </div>
+      <div class="step reveal" data-d="3">
+        <span class="step-label">Us</span>
+        <p class="step-text">하루 전, 당신의 프로필과 이상형을 분석하여 매칭률이 높은 상대를 소개합니다.</p>
+      </div>
+      <div class="step reveal" data-d="4">
+        <span class="step-label">→</span>
+        <p class="step-text">서로가 호감을 표하고 매칭되면, 장소는 4PM이 직접 큐레이션합니다.</p>
+      </div>
+    </div>
+    <p class="system-closing reveal">당신은, 인연을 만나기만 하면 됩니다.</p>
   </div>
 </section>
 
-<!-- ── CONNECT ── -->
+<!-- ── PAGE 4 · CONNECT ── -->
 <section class="connect">
-  <h2 class="connect-title reveal">지금 함께해요</h2>
-  <p class="connect-desc reveal" data-d="1">QR을 스캔하거나 탭해서 바로 참여해보세요</p>
+  <h2 class="connect-title reveal">
+    마음이 맞는다면,<br>그다음은 자연스럽게.
+  </h2>
+  <p class="connect-sub reveal" data-d="1">수업과 과제 사이, 잠시 멈춰 설 4PM.</p>
 
   <div class="qr-wrap">
     <a class="qr-card reveal" data-d="2"
@@ -486,6 +615,28 @@
       <span class="qr-btn">팔로우 →</span>
     </a>
   </div>
+</section>
+
+<!-- ── PAGE 5 · WHAT'S NEXT ── -->
+<section class="manifesto">
+  <div class="manifesto-eyebrow reveal">What's next</div>
+  <p class="manifesto-lead reveal" data-d="1">
+    4PM은 Swipe가 아닌,<br>In real life의 마주침을 기획합니다.
+  </p>
+  <p class="manifesto-eng reveal" data-d="2">
+    This isn't about dating.<br>
+    It's about real-life connection.<br>
+    Don't swipe, just face and talk.<br>
+    We want to change the world to rely on each other.
+  </p>
+  <div class="manifesto-rule reveal" data-d="2"></div>
+  <p class="manifesto-body reveal" data-d="3">
+    비교하거나 따지지 않고, 눈 앞의 상대를 보는 것.<br>
+    그게 우리가 아는 사랑이니까.
+  </p>
+  <p class="manifesto-closing reveal" data-d="4">
+    의미없는 고민과 채팅으로<br>인연을 놓치지 마세요.
+  </p>
 </section>
 
 <!-- ── FOOTER ── -->
